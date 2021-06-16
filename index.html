@@ -48,6 +48,11 @@
 				margin-right: 10px;
 			}
 
+			ul.images video {
+				flex: 0 0 auto;
+				margin-right: 10px;
+			}
+
 			::-webkit-scrollbar {
 			    display: none;
 			}
@@ -100,14 +105,15 @@
 						</div>
 						<div class="links-container">
 							<a href="https://github.com/Sharrp/breach-protocol-camera">github</a>
-							<a href="img/cyberhacking-demo.mov" target="blank">video demo</a>
 						</div>
 					</div>
 
 					<ul class="images">
 						<img src="./img/cyberhacking-playground.png" style="height:600px;" />
 						<img src="./img/cyberhacking-manual-corrections.jpg" style="height:600px;" />
-						<img src="./img/cyberhacking-solution.png" style="height:600px;" />
+						<video controls height="600">
+					    	<source src="./video/cyberhacking-demo.m4v" type="video/mp4">
+						</video>
 					</ul>
 				</div>
 
