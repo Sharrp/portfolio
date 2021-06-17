@@ -13,6 +13,10 @@
 			a {
 				color: #222;
 			}
+			a:hover {
+				opacity: 0.7;
+				text-decoration: none;
+			}
 
 			.main-container {
 				margin: 20 80 80 80;
@@ -27,7 +31,7 @@
 
 			.greeting {
 				font-family: "Roboto Mono";
-				font-size: 200px; 
+				font-size: 240px; 
 				font-weight: 400;
 				margin: 150 120 150 0;
 			}
@@ -53,12 +57,17 @@
 				margin-left: 100px;
 			}
 
+			img.bordered {
+				border: 1px solid #ddd;
+				/*border-color: #aaa;*/
+			}
+
 
 			ul.images {
 				display: flex;
 				flex-direction: row;
 				padding: 0;
-				margin: 0 -80 0 -80;
+				margin: 20 -80 0 -80;
 				overflow-x: auto;
 			}
 
@@ -78,7 +87,7 @@
 				color: #888;
 				font-size: 12pt;
 				line-height: 24px;
-				margin-top: 10px;
+				margin-top: 16px;
 
 				/* Wrap by image width */
 				display: table-caption;
@@ -108,7 +117,7 @@
 					<div class="greeting">
 						Hi
 					</div>
-					<div class="text" style="margin-top: 74px;">
+					<div class="text" style="margin-top: 75px;">
 						My name is Anton Vronskii.<br/>
 						I am an engineer with extensive product management experience.<br/>
 						Traditional r&#233;sum&#233; (<a href="./resume-anton-vronskii.pdf">pdf</a>, <a href="https://linkedin.com/in/anton-vronskii">LinkedIn</a>) doesn't do the best job to represent who I am, what I can and what I like to do the most. The collection of my favorite fun little projects below augments the r&#233;sum&#233; to mitigate that.
@@ -160,7 +169,7 @@
 
 					<ul class="images">
 						<figure>
-							<img src="./img/cyberhacking-playground.png" style="height:600px;" alt="Swift Playgrounds with code to test Vision framework" />
+							<img src="./img/cyberhacking-playground.png" class="bordered" style="height:600px;" alt="Swift Playgrounds with code to test Vision framework" />
 							<figcaption class="caption">Quickly testing in Swift Playgrounds how Vision framework works</figcaption>
 						</figure>
 						<figure>
@@ -177,6 +186,36 @@
 				</div>
 
 				<div class="project">
+					<div class="title">
+						Exploring horizons for Yandex.Search
+					</div>
+					<div class="text-links-container">
+						<div class="text">
+							At Yandex I was lucky to be a part of the "special force" group responsible for conducting quick bold experiments with Yandex Search apps to bring valuable insights to the team working on the core applications. To ensure stability of the app with millions of users, minimize risks of negative impact and speed up experimentation we created a separate version of the app based on the mix of web and native technologies.
+						</div>
+					</div>
+
+					<ul class="images">
+						<figure>
+							<img src="./img/search-tablets.png" class="bordered" style="height:600px;" alt="" />
+							<figcaption class="caption">Making rich search results for tablets</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/search-framer-layout.jpeg" style="height:600px;" alt="" />
+							<figcaption class="caption">Researching ways of making search prototyping easier by switching to a text-based approach</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/search-morda.png" class="bordered" style="height:600px;" alt="" />
+							<figcaption class="caption">Experimenting with bold event-based variations of main screen</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/search-layouts.png" style="height:600px;" alt="" />
+							<figcaption class="caption">Studying different layouts with real data</figcaption>
+						</figure>
+					</ul>
+				</div>
+
+				<div class="project" style="margin-top: 100px;">
 					<div class="title">
 						Search results on a map
 					</div>
@@ -196,36 +235,6 @@
 						</video>
 						<figcaption class="caption">Highlights of the main behavioral features of search results</figcaption>
 					</figure>
-				</div>
-
-				<div class="project">
-					<div class="title">
-						Exploring horizons for Yandex Search
-					</div>
-					<div class="text-links-container">
-						<div class="text">
-							At Yandex I was lucky to be a part of the "special force" group responsible for conducting quick bold experiments with Yandex Search apps to bring valuable insights to the team working on the core applications. To ensure stability of the app with millions of users, minimize risks of negative impact and speed up experimentation we created a separate version of the app based on the mix of web and native technologies.
-						</div>
-					</div>
-
-					<ul class="images">
-						<figure>
-							<img src="./img/search-tablets.png" style="height:600px;" alt="" />
-							<figcaption class="caption">Making rich search results for tablets</figcaption>
-						</figure>
-						<figure>
-							<img src="./img/search-framer-layout.png" style="height:600px;" alt="" />
-							<figcaption class="caption">Researching ways of making search prototyping easier by switching to a text-based approach</figcaption>
-						</figure>
-						<figure>
-							<img src="./img/search-morda.png" style="height:600px;" alt="" />
-							<figcaption class="caption">Experimenting with bold event-based variations of main screen</figcaption>
-						</figure>
-						<figure>
-							<img src="./img/search-layouts.png" style="height:600px;" alt="" />
-							<figcaption class="caption">Studying different layouts with real data</figcaption>
-						</figure>
-					</ul>
 				</div>
 
 				<div class="project">
