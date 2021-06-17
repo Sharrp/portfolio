@@ -27,6 +27,9 @@
 			}
 			.icon {
 				margin-right: 14;
+				width: 24px;
+				height: 32px;
+				object-fit: contain;
 			}
 
 			.greeting {
@@ -67,7 +70,7 @@
 				display: flex;
 				flex-direction: row;
 				padding: 0;
-				margin: 20 -80 0 -80;
+				margin: 30 -80 0 -80;
 				overflow-x: auto;
 				scrollbar-width: none; /* Hide scrollbar in Firefox */
 			}
@@ -231,7 +234,7 @@
 						</div>
 					</div>
 					<figure style="display: table; margin-left:0px;">
-						<video controls height="600" poster="./img/video-cover-maps.jpg">
+						<video controls preload height="600" poster="./img/video-cover-maps.jpg">
 					    	<source src="./video/maps-pins-demo.m4v" type="video/mp4">
 						</video>
 						<figcaption class="caption">Highlights of the main behavioral features of search results</figcaption>
