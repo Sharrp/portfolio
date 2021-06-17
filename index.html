@@ -38,14 +38,14 @@
 				display: flex;
 				flex-direction: row;
 				padding: 0;
-				/*width: 900px;*/
 				margin: 0 -80 0 -80;
 				overflow-x: auto;
 			}
 
-			ul.images img {
+			ul.images figure {
 				flex: 0 0 auto;
 				margin-right: 10px;
+				display: table; /* To wrap by image width */
 			}
 
 			ul.images video {
@@ -53,6 +53,18 @@
 				margin-right: 10px;
 			}
 
+			.caption {
+				text-align: center;
+				color: #888;
+				font-size: 12pt;
+				line-height: 24px;
+
+				/* Wrap by image width */
+				display: table-caption;
+				caption-side: bottom;
+			}
+
+			/* Disabling scroll bar for horizontally scrolling images */
 			::-webkit-scrollbar {
 			    display: none;
 			}
@@ -89,9 +101,18 @@
 					</div>
 
 					<ul class="images" style="margin-left:-37;">
-						<img src="./img/monnaie-sync-1.png" style="height:640px;" alt="Sync initial screen explaining the process" />
-						<img src="./img/monnaie-sync-2.png" style="height:640px;" alt="Sync request is sent automatically" />
-						<img src="./img/monnaie-sync-3.png" style="height:640px;" alt="Syncronization is done" />
+						<figure>
+							<img src="./img/monnaie-sync-1.png" style="height:640px;" alt="" />
+							<figcaption class="caption">Screen explaining the sync process</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/monnaie-sync-2.png" style="height:640px;" alt="" />
+							<figcaption class="caption">Sync request is sent automatically</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/monnaie-sync-3.png" style="height:640px;" alt="" />
+							<figcaption class="caption">Syncronization is done</figcaption>
+						</figure>
 					</ul>
 				</div>
 
@@ -109,11 +130,20 @@
 					</div>
 
 					<ul class="images">
-						<img src="./img/cyberhacking-playground.png" style="height:600px;" alt="Quickly testing in Swift Playgrounds how Vision framework works" />
-						<img src="./img/cyberhacking-manual-corrections.jpg" style="height:600px;" alt="First working solution with ability to correct recognized text" />
-						<video controls height="600">
-					    	<source src="./video/cyberhacking-demo.m4v" type="video/mp4">
-						</video>
+						<figure>
+							<img src="./img/cyberhacking-playground.png" style="height:600px;" alt="Swift Playgrounds with code to test Vision framework" />
+							<figcaption class="caption">Quickly testing in Swift Playgrounds how Vision framework works</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/cyberhacking-manual-corrections.jpg" style="height:600px;" alt="" />
+							<figcaption class="caption">First working solution with an ability to correct recognized text</figcaption>
+						</figure>
+						<figure>
+							<video controls height="600">
+						    	<source src="./video/cyberhacking-demo.m4v" type="video/mp4">
+							</video>
+							<figcaption class="caption">Demo of how "Point and get solution" works</figcaption>
+						</figure>
 					</ul>
 				</div>
 
@@ -144,10 +174,22 @@
 					</div>
 
 					<ul class="images">
-						<img src="./img/search-tablets.png" style="height:600px;" alt="Making rich search results for tablets" />
-						<img src="./img/search-framer-layout.png" style="height:600px;" alt="Researching ways of making search prototyping easier by switching to a text-based approach" />
-						<img src="./img/search-morda.png" style="height:600px;" alt="Experimenting with bold event-based variations of main screen" />
-						<img src="./img/search-layouts.png" style="height:600px;" alt="Studying different layouts with real data" />
+						<figure>
+							<img src="./img/search-tablets.png" style="height:600px;" alt="" />
+							<figcaption class="caption">Making rich search results for tablets</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/search-framer-layout.png" style="height:600px;" alt="" />
+							<figcaption class="caption">Researching ways of making search prototyping easier by switching to a text-based approach</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/search-morda.png" style="height:600px;" alt="" />
+							<figcaption class="caption">Experimenting with bold event-based variations of main screen</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/search-layouts.png" style="height:600px;" alt="" />
+							<figcaption class="caption">Studying different layouts with real data</figcaption>
+						</figure>
 					</ul>
 				</div>
 
@@ -185,9 +227,19 @@
 					</div>
 
 					<ul class="images">
-						<img src="./img/arduino-diodes.jpeg" style="height:600px;" alt="&quot;Hello, World&quot; of Arduino — blinking diodes" />
-						<img src="./img/arduino-test-stand.jpg" style="height:600px;" alt="Making a robot that &quot;senses&quot; geometry of a surrounding room" />
-						<img src="./img/arduino-weather.jpeg" style="height:600px;" alt="Simple setup to measure and display temperature and humidity" />
+
+						<figure>
+							<img src="./img/arduino-diodes.jpeg" style="height:600px;" alt="" />
+							<figcaption class="caption">&quot;Hello, World&quot; of Arduino &mdash; blinking diodes</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/arduino-test-stand.jpg" style="height:600px;" alt="" />
+							<figcaption class="caption">Making a robot that &quot;senses&quot; geometry of a surrounding room</figcaption>
+						</figure>
+						<figure>
+							<img src="./img/arduino-weather.jpeg" style="height:600px;" alt="" />
+							<figcaption class="caption">Simple setup to measure and display temperature and humidity</figcaption>
+						</figure>
 					</ul>
 
 					<div class="text">
