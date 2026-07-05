@@ -1,0 +1,630 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>N4 Inline Reader</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%E6%97%A5%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --fg: #1f2328;
+    --muted: #6a7178;
+    --rule: #e6e2da;
+    --jp: #123a63;
+    --jp-active: #0b6b57;
+    --rt: #8a5a00;
+    --link: #1a66c9;
+    --card: #ffffff;
+    --card-shadow: rgba(30, 35, 40, 0.14);
+    --panel-bg: #f2efe8;
+    --accent: #0b6b57;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --jp-font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+  }
+  :root[data-theme="dark"] {
+    --bg: #14171a;
+    --fg: #e6e8ea;
+    --muted: #9aa2ab;
+    --rule: #2b3036;
+    --jp: #8fc0ef;
+    --jp-active: #6fd6b9;
+    --rt: #e0b062;
+    --link: #6fb0f5;
+    --card: #1f2429;
+    --card-shadow: rgba(0, 0, 0, 0.5);
+    --panel-bg: #1b2024;
+    --accent: #6fd6b9;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--serif);
+    line-height: 1.7;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .2s ease, color .2s ease;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 20px 120px;
+  }
+
+  header.doc { margin: 8px 0 22px; }
+  header.doc .level {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 2px 9px;
+    margin-bottom: 12px;
+  }
+  header.doc h1 {
+    font-size: 1.7em;
+    line-height: 1.25;
+    margin: 0 0 6px;
+  }
+  header.doc .subtitle {
+    color: var(--muted);
+    font-style: italic;
+    margin: 0 0 8px;
+  }
+  header.doc .source {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+  }
+  header.doc .source a { color: var(--link); text-decoration: none; }
+  header.doc .source a:hover { text-decoration: underline; }
+
+  p.block { margin: 0 0 1.15em; }
+
+  /* Japanese sentence */
+  .jp {
+    font-family: var(--jp-font);
+    color: var(--jp);
+  }
+  .w {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 .5px;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background .12s ease, color .12s ease;
+  }
+  .w.kana { border-bottom: 1px dotted currentColor; }
+  .w.pressing { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+  ruby { ruby-align: center; }
+  ruby rt {
+    font-family: var(--jp-font);
+    color: var(--rt);
+    font-size: .52em;
+    visibility: hidden;              /* toggled, no layout jump */
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  ruby.on rt { visibility: visible; }
+
+  /* 訳 toggle at sentence end */
+  .tr-btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: .62em;
+    line-height: 1;
+    vertical-align: middle;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    position: relative;
+    top: -1px;
+  }
+  .tr-btn.on { background: var(--accent); color: var(--bg); }
+
+  .tr-panel {
+    display: none;
+    font-family: var(--sans);
+    background: var(--panel-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 8px 0 4px;
+    font-size: .82em;
+    line-height: 1.55;
+    color: var(--fg);
+  }
+  .tr-panel.on { display: block; }
+  .tr-panel .tr { margin: 0 0 6px; }
+  .tr-panel .g {
+    color: var(--muted);
+    border-top: 1px dashed var(--rule);
+    padding-top: 6px;
+  }
+  .tr-panel .g b { color: var(--accent); font-weight: 600; }
+
+  /* long-press popup */
+  #pop {
+    position: fixed;
+    z-index: 50;
+    display: none;
+    max-width: 240px;
+    background: var(--card);
+    color: var(--fg);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    box-shadow: 0 8px 26px var(--card-shadow);
+    padding: 10px 13px;
+    font-family: var(--sans);
+    pointer-events: none;
+  }
+  #pop .surface { font-family: var(--jp-font); font-size: 1.15em; font-weight: 600; }
+  #pop .reading { font-family: var(--jp-font); color: var(--rt); font-size: .9em; margin-top: 1px; }
+  #pop .meaning { margin-top: 5px; font-size: .9em; line-height: 1.4; color: var(--muted); }
+
+  /* settings */
+  #gear {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 40;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    background: var(--card);
+    color: var(--fg);
+    box-shadow: 0 4px 16px var(--card-shadow);
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #scrim {
+    position: fixed; inset: 0; z-index: 45;
+    background: rgba(0,0,0,.35);
+    display: none;
+  }
+  #scrim.on { display: block; }
+  #sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 46;
+    background: var(--card);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -6px 26px var(--card-shadow);
+    padding: 18px 20px calc(20px + env(safe-area-inset-bottom));
+    font-family: var(--sans);
+    transform: translateY(110%);
+    transition: transform .22s ease;
+  }
+  #sheet.on { transform: translateY(0); }
+  #sheet h2 { font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .row { margin: 0 0 16px; }
+  .row label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .row .val { color: var(--fg); }
+  input[type="range"] { width: 100%; accent-color: var(--accent); }
+  .seg { display: flex; gap: 6px; }
+  .seg button {
+    flex: 1;
+    font-family: var(--sans);
+    font-size: 13px;
+    padding: 8px 0;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+  }
+  .seg button.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  #sheet .done {
+    width: 100%;
+    margin-top: 4px;
+    padding: 11px 0;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .picker {
+    font-family: var(--sans);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .picker select {
+    font: inherit;
+    color: var(--fg);
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 6px 8px;
+    max-width: 100%;
+  }
+  .err { font-family: var(--sans); color: #c0392b; padding: 20px 0; }
+</style>
+
+<div class="wrap">
+  <div class="picker" id="picker" hidden>
+    <select id="pickSel" aria-label="Choose article"></select>
+  </div>
+  <header class="doc" id="head"></header>
+  <main id="body"></main>
+</div>
+
+<div id="pop" aria-hidden="true">
+  <div class="surface"></div>
+  <div class="reading"></div>
+  <div class="meaning"></div>
+</div>
+
+<button id="gear" aria-label="Settings">⚙</button>
+<div id="scrim"></div>
+<div id="sheet" role="dialog" aria-label="Reader settings">
+  <h2>Reader settings</h2>
+  <div class="row">
+    <label>Font size — <span class="val" id="fsVal"></span></label>
+    <input type="range" id="fs" min="16" max="26" step="1">
+  </div>
+  <div class="row">
+    <label>Distance between characters — <span class="val" id="lsVal"></span></label>
+    <input type="range" id="ls" min="0" max="15" step="1">
+  </div>
+  <div class="row">
+    <label>Theme</label>
+    <div class="seg" id="themeSeg">
+      <button data-theme="auto">Auto</button>
+      <button data-theme="light">Light</button>
+      <button data-theme="dark">Dark</button>
+    </div>
+  </div>
+  <button class="done" id="doneBtn">Done</button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- settings / theme ----------
+  var LS = {
+    fs: "n4_fontsize",
+    ls: "n4_letterspacing",
+    th: "n4_theme"
+  };
+  var mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function applyTheme(mode) {
+    var root = document.documentElement;
+    if (mode === "auto") {
+      root.setAttribute("data-theme", mq.matches ? "dark" : "light");
+    } else {
+      root.setAttribute("data-theme", mode);
+    }
+  }
+  function getPref(key, dflt) {
+    try { var v = localStorage.getItem(key); return v === null ? dflt : v; }
+    catch (e) { return dflt; }
+  }
+  function setPref(key, v) { try { localStorage.setItem(key, v); } catch (e) {} }
+
+  var themeMode = getPref(LS.th, "auto");
+  var fontSize = parseInt(getPref(LS.fs, "19"), 10);
+  var letterSpacing = parseInt(getPref(LS.ls, "0"), 10); // stored 0..15 => 0..0.15em
+
+  applyTheme(themeMode);
+  mq.addEventListener("change", function () { if (themeMode === "auto") applyTheme("auto"); });
+
+  function applyTypography() {
+    var wrap = document.querySelector(".wrap");
+    wrap.style.fontSize = fontSize + "px";
+    document.body.style.letterSpacing = (letterSpacing / 100) + "em";
+  }
+
+  // settings UI
+  var gear = document.getElementById("gear");
+  var scrim = document.getElementById("scrim");
+  var sheet = document.getElementById("sheet");
+  var fsIn = document.getElementById("fs");
+  var lsIn = document.getElementById("ls");
+  var fsVal = document.getElementById("fsVal");
+  var lsVal = document.getElementById("lsVal");
+  var themeSeg = document.getElementById("themeSeg");
+
+  function refreshSettingsUI() {
+    fsIn.value = fontSize; fsVal.textContent = fontSize + "px";
+    lsIn.value = letterSpacing; lsVal.textContent = (letterSpacing / 100).toFixed(2) + "em";
+    [].forEach.call(themeSeg.children, function (b) {
+      b.classList.toggle("on", b.getAttribute("data-theme") === themeMode);
+    });
+  }
+  function openSheet() { refreshSettingsUI(); scrim.classList.add("on"); sheet.classList.add("on"); }
+  function closeSheet() { scrim.classList.remove("on"); sheet.classList.remove("on"); }
+
+  gear.addEventListener("click", openSheet);
+  scrim.addEventListener("click", closeSheet);
+  document.getElementById("doneBtn").addEventListener("click", closeSheet);
+
+  fsIn.addEventListener("input", function () {
+    fontSize = parseInt(fsIn.value, 10); setPref(LS.fs, fontSize);
+    fsVal.textContent = fontSize + "px"; applyTypography();
+  });
+  lsIn.addEventListener("input", function () {
+    letterSpacing = parseInt(lsIn.value, 10); setPref(LS.ls, letterSpacing);
+    lsVal.textContent = (letterSpacing / 100).toFixed(2) + "em"; applyTypography();
+  });
+  themeSeg.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    themeMode = b.getAttribute("data-theme"); setPref(LS.th, themeMode);
+    applyTheme(themeMode); refreshSettingsUI();
+  });
+
+  applyTypography();
+
+  // ---------- popup ----------
+  var pop = document.getElementById("pop");
+  var popSurface = pop.querySelector(".surface");
+  var popReading = pop.querySelector(".reading");
+  var popMeaning = pop.querySelector(".meaning");
+
+  function showPopup(x, y, surface, reading, meaning) {
+    popSurface.textContent = surface;
+    popReading.textContent = reading || "";
+    popReading.style.display = reading ? "" : "none";
+    popMeaning.textContent = meaning || "";
+    pop.style.display = "block";
+    var w = pop.offsetWidth, h = pop.offsetHeight;
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var left = Math.min(Math.max(8, x - w / 2), vw - w - 8);
+    var top = y - h - 14;
+    if (top < 8) top = y + 20;
+    top = Math.min(top, vh - h - 8);
+    pop.style.left = left + "px";
+    pop.style.top = top + "px";
+  }
+  function hidePopup() { pop.style.display = "none"; }
+  document.addEventListener("pointerdown", function (e) {
+    if (pop.style.display === "block" && !e.target.classList.contains("w")) hidePopup();
+  }, true);
+  window.addEventListener("scroll", hidePopup, { passive: true });
+
+  // ---------- word interaction (delegated) ----------
+  var LONGPRESS_MS = 420;
+  var MOVE_TOL = 10;
+  var press = null; // {timer, x, y, el, fired}
+
+  function clearPress() {
+    if (press && press.timer) clearTimeout(press.timer);
+    if (press && press.el) press.el.classList.remove("pressing");
+    press = null;
+  }
+
+  document.addEventListener("pointerdown", function (e) {
+    var w = e.target.closest(".w");
+    if (!w) return;
+    // words carry data-m (meaning) and optional data-r (reading)
+    e.preventDefault();
+    var meaning = w.getAttribute("data-m");
+    var reading = w.getAttribute("data-r");
+    press = { x: e.clientX, y: e.clientY, el: w, fired: false, timer: null };
+    w.classList.add("pressing");
+    if (meaning) {
+      press.timer = setTimeout(function () {
+        press.fired = true;
+        w.classList.remove("pressing");
+        var surface = w.getAttribute("data-s") || w.textContent;
+        showPopup(press.x, press.y, surface, reading, meaning);
+      }, LONGPRESS_MS);
+    }
+  });
+
+  document.addEventListener("pointermove", function (e) {
+    if (!press) return;
+    if (Math.abs(e.clientX - press.x) > MOVE_TOL || Math.abs(e.clientY - press.y) > MOVE_TOL) {
+      clearPress();
+    }
+  });
+
+  document.addEventListener("pointerup", function (e) {
+    if (!press) return;
+    var w = press.el;
+    var fired = press.fired;
+    clearPress();
+    if (fired) return; // long-press already handled
+    // short tap: toggle furigana on kanji words (those wrapped in ruby)
+    var ruby = w.querySelector("ruby") || (w.tagName === "RUBY" ? w : null);
+    if (w.classList.contains("kanji")) {
+      var r = w.querySelector("ruby");
+      if (r) r.classList.toggle("on");
+    }
+  });
+
+  // suppress context menu / selection on words (long-press)
+  document.addEventListener("contextmenu", function (e) {
+    if (e.target.closest(".w")) e.preventDefault();
+  });
+
+  // ---------- 訳 toggles (delegated) ----------
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".tr-btn");
+    if (!btn) return;
+    var panel = document.getElementById(btn.getAttribute("data-panel"));
+    if (!panel) return;
+    var on = panel.classList.toggle("on");
+    btn.classList.toggle("on", on);
+  });
+
+  // ---------- rendering ----------
+  function el(tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e; }
+
+  var sentCounter = 0;
+
+  function renderToken(tok, container) {
+    if (typeof tok === "string") {
+      container.appendChild(document.createTextNode(tok));
+      return;
+    }
+    // [surface, reading|null, meaning]
+    var surface = tok[0], reading = tok[1], meaning = tok[2];
+    var span = el("span", "w");
+    span.setAttribute("data-s", surface);
+    if (meaning) span.setAttribute("data-m", meaning);
+    if (reading) {
+      span.classList.add("kanji");
+      span.setAttribute("data-r", reading);
+      var ruby = el("ruby");
+      ruby.appendChild(document.createTextNode(surface));
+      var rt = el("rt");
+      rt.textContent = reading;
+      ruby.appendChild(rt);
+      span.appendChild(ruby);
+    } else {
+      span.classList.add("kana");
+      span.textContent = surface;
+    }
+    container.appendChild(span);
+  }
+
+  function renderSentence(part, container) {
+    var sent = el("span", "jp");
+    part.jp.forEach(function (tok) { renderToken(tok, sent); });
+    container.appendChild(sent);
+    // 訳 button + panel
+    var id = "tp" + (++sentCounter);
+    var btn = el("span", "tr-btn");
+    btn.textContent = "訳";
+    btn.setAttribute("data-panel", id);
+    container.appendChild(btn);
+
+    var panel = el("div", "tr-panel");
+    panel.id = id;
+    var tr = el("div", "tr");
+    tr.textContent = part.tr || "";
+    panel.appendChild(tr);
+    if (part.g) {
+      var g = el("div", "g");
+      g.innerHTML = sanitizeGrammar(part.g);
+      panel.appendChild(g);
+    }
+    // panel is placed after the paragraph so it can be block-level
+    container._panels = container._panels || [];
+    container._panels.push(panel);
+  }
+
+  // allow only <b> in grammar notes; escape everything else
+  function sanitizeGrammar(s) {
+    var esc = String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    return esc.replace(/&lt;b&gt;/g, "<b>").replace(/&lt;\/b&gt;/g, "</b>");
+  }
+
+  function renderBlock(block) {
+    var p = el("p", "block");
+    var panels = [];
+    p._panels = panels;
+    block.forEach(function (part) {
+      if (typeof part === "string") {
+        p.appendChild(document.createTextNode(part));
+      } else {
+        renderSentence(part, p);
+      }
+    });
+    var frag = document.createDocumentFragment();
+    frag.appendChild(p);
+    (p._panels || []).forEach(function (pan) { frag.appendChild(pan); });
+    return frag;
+  }
+
+  function renderArticle(data) {
+    var head = document.getElementById("head");
+    head.innerHTML = "";
+    if (data.level) {
+      var lv = el("span", "level"); lv.textContent = data.level; head.appendChild(lv);
+    }
+    var h1 = el("h1"); h1.textContent = data.title || "Untitled"; head.appendChild(h1);
+    if (data.subtitle) { var st = el("div", "subtitle"); st.textContent = data.subtitle; head.appendChild(st); }
+    if (data.source && data.source.url) {
+      var src = el("div", "source");
+      src.appendChild(document.createTextNode("Source: "));
+      var a = el("a");
+      a.href = data.source.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = data.source.label || data.source.url;
+      src.appendChild(a);
+      head.appendChild(src);
+    }
+    document.title = (data.title || "N4 Reader") + " — N4 Reader";
+
+    var body = document.getElementById("body");
+    body.innerHTML = "";
+    sentCounter = 0;
+    (data.blocks || []).forEach(function (block) {
+      body.appendChild(renderBlock(block));
+    });
+  }
+
+  function showError(msg) {
+    document.getElementById("body").innerHTML =
+      '<div class="err">' + msg + "</div>";
+  }
+
+  // ---------- loading ----------
+  function qs(name) {
+    var m = new RegExp("[?&]" + name + "=([^&]+)").exec(location.search);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function loadArticle(slug) {
+    fetch("articles/" + slug + ".json", { cache: "no-cache" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(renderArticle)
+      .catch(function (e) { showError("Could not load article “" + slug + "”. " + e.message); });
+  }
+
+  function setupPicker(list, current) {
+    if (!list || list.length <= 1) return;
+    var picker = document.getElementById("picker");
+    var sel = document.getElementById("pickSel");
+    list.forEach(function (item) {
+      var o = el("option");
+      o.value = item.slug;
+      o.textContent = item.title || item.slug;
+      if (item.slug === current) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener("change", function () {
+      location.search = "?a=" + encodeURIComponent(sel.value);
+    });
+    picker.hidden = false;
+  }
+
+  fetch("articles/index.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (list) {
+      list = Array.isArray(list) ? list : [];
+      var want = qs("a");
+      var slug = want || (list[0] && list[0].slug);
+      if (!slug) { showError("No articles found."); return; }
+      setupPicker(list, slug);
+      loadArticle(slug);
+    })
+    .catch(function () {
+      var want = qs("a");
+      if (want) loadArticle(want);
+      else showError("No article index found.");
+    });
+})();
+</script>

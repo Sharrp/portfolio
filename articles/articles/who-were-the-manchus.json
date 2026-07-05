@@ -1,0 +1,44 @@
+{
+  "title": "Who were the Manchus?",
+  "subtitle": "A short N4 reading about the people who founded China's last dynasty.",
+  "level": "N4",
+  "source": { "url": "https://en.wikipedia.org/wiki/Manchu_people", "label": "en.wikipedia.org" },
+  "blocks": [
+    [
+      "The Manchus were a people from the northeast of Asia. ",
+      {
+        "jp": [
+          ["彼ら", "かれら", "they"], "は", ["昔", "むかし", "long ago"], "、",
+          ["中国", "ちゅうごく", "China"], "の", ["北", "きた", "north"], "に",
+          ["住んでいました", "すんでいました", "were living"], "。"
+        ],
+        "tr": "Long ago, they lived in the north of China.",
+        "g": "<b>〜ていました</b> is the past continuous — an ongoing state in the past ('were living')."
+      }
+    ],
+    [
+      {
+        "jp": [
+          ["彼ら", "かれら", "they"], "は", ["1644年", "せんろっぴゃくよんじゅうよねん", "the year 1644"], "に",
+          ["国", "くに", "country"], "を", ["まとめて", null, "to unify / gather into one"],
+          ["清", "しん", "the Qing (dynasty)"], "という", ["国", "くに", "country"], "を",
+          ["作りました", "つくりました", "made / founded"], "。"
+        ],
+        "tr": "In 1644 they unified the country and founded a state called the Qing.",
+        "g": "<b>〜という</b> names something: 「清という国」= 'a country called the Qing.' <b>まとめて</b> is the て-form of the kana verb まとめる, linking the two actions."
+      },
+      " The Qing became the last dynasty of imperial China."
+    ],
+    [
+      "Their language and customs were different from those of the Han majority. ",
+      {
+        "jp": [
+          ["言葉", "ことば", "language"], "も", ["文化", "ぶんか", "culture"], "も",
+          ["とても", null, "very"], ["ちがいました", null, "were different"], "。"
+        ],
+        "tr": "Both their language and their culture were very different.",
+        "g": "<b>〜も〜も</b> means 'both … and …'. <b>ちがいました</b> is the past of the kana verb ちがう ('to differ')."
+      }
+    ]
+  ]
+}

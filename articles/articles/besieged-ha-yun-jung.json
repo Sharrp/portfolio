@@ -1,0 +1,329 @@
+{
+  "title": "Besieged",
+  "subtitle": "by Ha-yun Jung — a memoir of Korea under martial law, 1979 to 2025",
+  "level": "N4",
+  "source": { "url": "https://worldliteraturetoday.org/2025/november/besieged-ha-yun-jung", "label": "worldliteraturetoday.org" },
+  "blocks": [
+    [
+      {
+        "jp": [
+          ["1979年", "せんきゅうひゃくななじゅうきゅうねん", "the year 1979"], "、",
+          ["大統領", "だいとうりょう", "president"], "が",
+          ["夜中", "よなか", "middle of the night"], "に",
+          ["殺されました", "ころされました", "was killed"], "。"
+        ],
+        "tr": "It is 1979, and the president — the only one I have known in my thirteen years — is shot to death in the middle of the night.",
+        "g": "<b>殺されました</b> is the passive of 殺す ('to kill'). The passive past polite ends in 〜されました — 'was killed.'"
+      },
+      " The news arrives with the ringing at my father's bedside. I open the door to my parents' bedroom and catch my father's long, naked legs as he struggles to sit up while holding the receiver to his ear, a scowl between his brows. He soon turns to my mother and says, “Park Chung Hee is dead,” creating a stir that feels strangely like excitement."
+    ],
+    [
+      {
+        "jp": [
+          ["朝", "あさ", "morning"], "、", ["私", "わたし", "I"], "は",
+          ["いつも", null, "always / as usual"], "のように",
+          ["学校", "がっこう", "school"], "へ",
+          ["歩いて", "あるいて", "walk (te-form)"], ["行きます", "いきます", "go"], "。"
+        ],
+        "tr": "In the morning, I walk to school like any other day.",
+        "g": "<b>のように</b> means 'like / as'; いつものように = 'as always.' <b>歩いて行きます</b> links two verbs with the て-form — literally 'walk-and-go.'"
+      },
+      " I cross the complex past fourteen rows of apartment buildings, take the footbridge across the main street, to the gate where a squad of five student monitors is lined up to check every single girl arriving at school: identical in all-black uniforms and one-centimeter-below-the-ear haircuts. Several students are pulled out for the wrong kind of hairpin or a missing name tag. I make it past them safely, but as soon as I step inside I am assaulted by a shrill chorus of crying sweeping across the hallway from room to room. In my classroom, many students are weeping into their hands, some clasping their seatmates, moaning, “What's going to happen to us now?” ",
+      {
+        "jp": [
+          ["死んだ", "しんだ", "dead (past of 死ぬ)"],
+          ["大統領", "だいとうりょう", "president"], "の",
+          ["写真", "しゃしん", "photo"], "が", "、",
+          ["黒板", "こくばん", "blackboard"], "の", ["上", "うえ", "above / top"], "に",
+          ["かかっています", null, "is hanging"], "。"
+        ],
+        "tr": "The dead president's photo hangs in its usual spot above the blackboard, next to the national flag.",
+        "g": "<b>かかっています</b> (from かかる, 'to hang') uses the 〜ている form to show a continuing state — 'is hanging.'"
+      }
+    ],
+    [
+      {
+        "jp": [
+          ["一年前", "いちねんまえ", "one year ago"], "、",
+          ["家族", "かぞく", "(my) family"], "は", ["バンコク", null, "Bangkok"], "から",
+          ["ソウル", null, "Seoul"], "に", ["戻りました", "もどりました", "moved back"], "。"
+        ],
+        "tr": "It is less than a year since my family moved back from Bangkok to Seoul, where I started middle school.",
+        "g": "<b>〜から〜に</b> marks 'from … to …' for movement. <b>戻りました</b> is the past of 戻る ('to return / move back')."
+      },
+      " Nothing here seems anything like the life I have known. ",
+      {
+        "jp": [
+          ["今", "いま", "now"], "、", ["私たち", "わたしたち", "we"], "は",
+          ["灰色", "はいいろ", "gray"], "の", ["アパート", null, "apartment"], "に",
+          ["住んでいます", "すんでいます", "live"], "。"
+        ],
+        "tr": "We now live in a flat and gray concrete complex.",
+        "g": "<b>住んでいます</b> (住む + ている) expresses an ongoing state — where one currently lives."
+      },
+      " It is far away from the hilly neighborhood across the Han River where I was surrounded by our huge extended family, with my grandfather, now passed away, at the center of it all. Here at the new riverside developments, everything seems unfinished — the school gym still under construction, only half the classrooms occupied, the lawn behind our building bald and barren except for a few transplanted baby trees supported precariously by tripods."
+    ],
+    [
+      "The migration — from my old, familiar neighborhood to the dizzying colors of tropical Thailand, then back to a part of Seoul so unlike the city I remember — has made everything about my life feel alien, including my parents, who no longer seem the same: my father having left his government post, my mother spending many days in bed. So it makes me wonder: Could this president's sudden death make my life any stranger?"
+    ],
+    [
+      "In 1980 martial law is a rumor rumbling in the distance, making its way into my classroom when I overhear two students whispering that there's a riot in this city called Gwangju, and soldiers are arresting everyone out on the streets, even schoolgirls like us. ",
+      {
+        "jp": [
+          ["1980年", "せんきゅうひゃくはちじゅうねん", "the year 1980"], "、",
+          ["光州", "クァンジュ", "Gwangju (a city)"], "という", ["町", "まち", "town"], "で",
+          ["大きな", "おおきな", "big"], ["事件", "じけん", "incident"], "が",
+          ["起きました", "おきました", "happened"], "。"
+        ],
+        "tr": "In 1980, a big incident happened in a town called Gwangju.",
+        "g": "<b>〜という</b> names something: 「光州という町」= 'a town called Gwangju.'"
+      },
+      " The soldiers punished one girl by cutting off her breasts with a bayonet! My two classmates let out a shriek. Shush! The one telling the story quickly brings a finger to her lips. We're not supposed to be talking about this!"
+    ],
+    [
+      "In my father's morning paper I have seen photos accompanied by huge blocks of text in Han characters. Were they of protests? Riots? Are they different? How? But the story I just heard sounds nothing like anything in the news. It seems fake and absurd, like that movie Friday the 13th, which a classmate boasted about watching on a pirated VHS copy her brother snuck home — but which sounded dumb, at least to me."
+    ],
+    [
+      {
+        "jp": [
+          ["秋", "あき", "autumn / fall"], "に", "、",
+          ["新しい", "あたらしい", "new"], ["大統領", "だいとうりょう", "president"], "が",
+          ["来ました", "きました", "came"], "。"
+        ],
+        "tr": "In the fall, a new president takes office.",
+        "g": "<b>〜に</b> marks the time when something happens: 秋に = 'in the fall.'"
+      },
+      " Our social studies final tests us not on the textbook but on the goals and slogans of the new administration, which we must learn word for word: The Realization of Social Justice; the Construction of a Welfare Society; the Creation of an Advanced Nation. My home tutor, a junior in university, tells me in despair that the new president is one of the generals who drove tanks into the city to take over the country. Just weeks later, ",
+      {
+        "jp": [
+          ["政府", "せいふ", "government"], "は", "、",
+          ["塾", "じゅく", "cram school / tutoring"], "を",
+          ["禁止しました", "きんししました", "banned / prohibited"], "。"
+        ],
+        "tr": "The government announces that tutoring — all learning outside the school system — is now banned, effective immediately.",
+        "g": "<b>禁止する</b> ('to prohibit') is a する-verb; its past polite is 禁止しました."
+      },
+      " ",
+      {
+        "jp": [
+          ["私", "わたし", "I"], "は", "、", ["もう", null, "(not) anymore"],
+          ["先生", "せんせい", "teacher"], "に",
+          ["会えませんでした", "あえませんでした", "could not meet"], "。"
+        ],
+        "tr": "I never see my tutor again.",
+        "g": "<b>会えませんでした</b> is the potential of 会う ('to meet') in the negative past — 'could not meet.' <b>もう</b> + a negative = 'not anymore.'"
+      }
+    ],
+    [
+      "And in the most unexpected turn of events, ",
+      {
+        "jp": [
+          ["父", "ちち", "(my) father"], "は", "、",
+          ["選挙", "せんきょ", "election"], "に", ["出る", "でる", "to run in / go out"],
+          "ことに", ["決めました", "きめました", "decided"], "。"
+        ],
+        "tr": "My father decides to run for a seat in the National Assembly as an opposition-party candidate.",
+        "g": "<b>〜ことにする</b> means 'decide to do': 出ることに決めました = 'decided to run.'"
+      },
+      " “These are new times. Things should be different,” my father tells one of the many visitors suddenly crowding our apartment."
+    ],
+    [
+      "My parents begin spending most days campaigning in his constituency, my grandfather's hometown three hours away. They often take my brother, still in elementary school, but I stay behind, uninterested, perhaps even skeptical. In their absence, I start my third year in middle school. My new homeroom teacher assigns us, on top of our regular homework, a daily quota of ten sheets that must be filled top to bottom — absolutely no margins allowed! — with our own evening study. I copy the lyrics to my favorite songs, by the Beatles, Pink Floyd, Paul Simon, Elton John, every number from the soundtrack of Fame, pretending to study from my English textbook. ",
+      {
+        "jp": [
+          ["毎晩", "まいばん", "every night"], "、", ["私", "わたし", "I"], "は",
+          ["机", "つくえ", "desk"], "で",
+          ["寝てしまいます", "ねてしまいます", "end up falling asleep"], "。"
+        ],
+        "tr": "Most nights I fall asleep at the desk, still in my jeans and T-shirt.",
+        "g": "<b>〜てしまう</b> shows an action done completely or regrettably: 寝てしまいます = 'end up falling asleep.'"
+      },
+      " Then I stir awake, panicking that I have yet to finish, dreading the ruler slaps that await at the end of the school day — the pain and the humiliation."
+    ],
+    [
+      "Some days the teacher skips the checking and spirals into tirades about how to live a disciplined life, about some mystical ancient civilization, about pollutants and nutrients, stuff I can't quite follow. But sometimes things don't stop there, and we're told to empty our bags to search for anything that shouldn't be there — nail polish, photos of celebrities, we're never sure what — and sometimes someone is singled out, for reasons unclear, and is yelled at and slapped, again and again, until she stumbles down the center aisle, is shoved to the floor and kicked, over and over. When he finally stops, he is panting, as if he has completed a task of tremendous importance, and we all remain completely silent, no one moving, not even the girl on the floor, not even a whimper."
+    ],
+    [
+      {
+        "jp": [
+          ["その", null, "that"], ["子", "こ", "child / girl"], "は", "、",
+          ["私", "わたし", "I / me"], "だった", ["かもしれません", null, "might have been"], "。"
+        ],
+        "tr": "It terrifies me that the girl on the floor could have been me.",
+        "g": "<b>〜かもしれません</b> means 'might / could be': 私だったかもしれません = 'could have been me.'"
+      },
+      " But at the same time, ",
+      {
+        "jp": [
+          ["私", "わたし", "I / me"], "じゃなくて", "、",
+          ["よかった", null, "was glad / good"], "です", "。"
+        ],
+        "tr": "I am relieved that it was her and not me.",
+        "g": "<b>〜てよかった</b> expresses relief or gladness. じゃなくて = 'not being ~'; 私じゃなくてよかった = 'I'm glad it wasn't me.'"
+      },
+      " It does not occur to me that there ought to be a law to protect us; I have no way of imagining that this can be stopped. Instead, I crumble inside. Nothing to be done. Not here is the one place I want to be."
+    ],
+    [
+      {
+        "jp": [
+          ["選挙", "せんきょ", "election"], "の", ["日", "ひ", "day"], "、",
+          ["私", "わたし", "I"], "は", ["父", "ちち", "father"], "が",
+          ["負けた", "まけた", "lost"], "ことを", ["テレビ", null, "TV"], "で",
+          ["知りました", "しりました", "found out"], "。"
+        ],
+        "tr": "I am home alone on election day, and I learn from TV that my father has lost.",
+        "g": "<b>負けた + ことを知りました</b> — the particle ことを turns the clause 'father lost' into the object of 知る ('to find out')."
+      },
+      " The four of us retreat to our three bedrooms, each sealed tight, months passing in silence. ",
+      {
+        "jp": [
+          ["ある", null, "one / a certain"], ["朝", "あさ", "morning"], "、",
+          ["母", "はは", "(my) mother"], "が",
+          ["起きませんでした", "おきませんでした", "did not wake up"], "。"
+        ],
+        "tr": "Until one morning, my mother does not wake up.",
+        "g": "<b>ある + noun</b> means 'a certain ~': ある朝 = 'one morning.' 起きませんでした is the negative past of 起きる."
+      },
+      " My father drives her to the ER, telling me to sit in the back seat with her. At the hospital, he chastises me for sobbing — that perhaps I am not the mature, responsible individual he thought I had grown into. ",
+      {
+        "jp": [
+          ["母", "はは", "mother"], "は", ["助かりました", "たすかりました", "survived / was saved"], "。"
+        ],
+        "tr": "My mother survives.",
+        "g": "<b>助かる</b> ('to be saved / to survive') is intransitive; its past polite is 助かりました."
+      },
+      " But the fact that she wanted to no longer exist in this world is something that must not be discussed, I come to believe. No one around me has any words to offer me. Guilt and shame become my home, the place I live in."
+    ],
+    [
+      "Years later I would look back and find this picture in my mind: living alone in the apartment, no one else there, somehow persevering, terrified that someone will look inside me and find all the things I must keep hidden. I fill my ten daily pages and walk to school each morning, hoping to make it past the student monitors, praying no one will get beaten up. But from this warped memory also emerges a scene that is vivid and accurate — walking home on my birthday when, crossing the footbridge, I notice a huge, overgrown rosebush, its blossoms blood-red, so bright they feel imagined. ",
+      {
+        "jp": [
+          ["私", "わたし", "I"], "が", ["生まれた", "うまれた", "was born"],
+          ["日", "ひ", "day"], "に", "、", ["赤い", "あかい", "red"],
+          ["ばら", null, "rose(s)"], "が", ["咲いていました", "さいていました", "were blooming"], "。"
+        ],
+        "tr": "Red roses that bloom, full and beautiful, on the day I was born — something I never knew before.",
+        "g": "<b>咲いていました</b> (咲く + ていました) describes an ongoing past state — 'were in bloom.' 生まれた日 = 'the day (I) was born.'"
+      }
+    ],
+    [
+      "It is 1986, and martial law is a past we must dig up and look straight in the eye. The upperclassmen in the Korean lit department tell us we have been living in innocent ignorance and must now go through a painful awakening through reeducation. ",
+      {
+        "jp": [
+          ["私", "わたし", "I"], "は", ["文学", "ぶんがく", "literature"], "を",
+          ["読みたくて", "よみたくて", "wanting to read"], "、",
+          ["大学", "だいがく", "college / university"], "に", ["来ました", "きました", "came"], "。"
+        ],
+        "tr": "I have come to college hoping to read literature.",
+        "g": "<b>〜たくて</b> is the て-form of the 〜たい ('want to') form, used to give a reason: 読みたくて = 'wanting to read, and so ….'"
+      },
+      " I hoped to meet someone dashing who reads literature, to find books that speak for all that is entangled inside of me, to put into my own words all that I have kept locked. But the first thing that greets me on campus is the Pocketbook for Freshmen, whose calendar marks a dozen dates in red to commemorate the deaths of activist martyrs — students and laborers who leaped from windows and rooftops and bridges after setting themselves aflame."
+    ],
+    [
+      "At the freshman welcome retreat we learn the liberation dance — less a dance than a martial-arts sequence of militant high kicks — sing protest songs, and drink makgeolli late into the night. Then, in the morning, we are rattled awake for our consciousness-raising session, which requires writing down and reading aloud brutal words of self-criticism."
+    ],
+    [
+      "I run, even if it means I am a selfish, ignorant bourgeois — which, coming from their hard, righteous mouths, sounds worse than a swear word."
+    ],
+    [
+      "I seek shelter at the theater club, the kind that stages dramas in what is considered the Western imperialist tradition. ",
+      {
+        "jp": [
+          ["私", "わたし", "I"], "は", ["演劇部", "えんげきぶ", "theater club"], "に",
+          ["入りました", "はいりました", "joined / entered"], "。"
+        ],
+        "tr": "I join the theater club.",
+        "g": "<b>〜に入る</b> ('to enter / join') takes the particle に for the group joined: 演劇部に入りました."
+      },
+      " I find peace in the dark nooks backstage, in the wings, in the green room, in the control room up on the third floor with a distant view of the proscenium, where the actors bask under the bright lights."
+    ],
+    [
+      "In the steamy student cafeteria, blown-up photos of scenes from Gwangju serve as a backdrop to all our meals — tanks bulldozing through the crowds, soldiers striking protesters with shields and clubs, streets awash in blood, students in uniforms like the ones I used to wear, cuffed and roped in a chain like bundles of dried fish, rows of coffins, piles of corpses, and this young boy resting his head on his father's funeral portrait with a faint, complicated glow in his eyes. I cannot bear to look into those eyes. I recognize his hollow grief. I know what it is, but I feel I have no right to feel it myself — I, who has not lost her father; I, who did not get her breasts cut off by soldiers; I, who sat unmoving when my classmate was slapped and kicked, when a fellow freshman stormed into the lecture room shouting, “There are students being beaten up and taken away as we speak!” I, who have done nothing."
+    ],
+    [
+      {
+        "jp": [
+          ["2024年", "にせんにじゅうよねん", "the year 2024"],
+          ["12月", "じゅうにがつ", "December"], ["3日", "みっか", "the 3rd"], "、",
+          ["また", null, "again"], ["戒厳令", "かいげんれい", "martial law"], "が",
+          ["出ました", "でました", "was issued / declared"], "。"
+        ],
+        "tr": "On December 3, 2024, martial law is declared for the first time in forty-five years.",
+        "g": "<b>また</b> = 'again.' 戒厳令が出ました is literally 'martial law came out,' i.e. 'martial law was declared.'"
+      },
+      " It is aired live on national television and streamed real-time on YouTube. By now we have elected eight presidents by direct vote, sent the culprits of the Gwangju massacre to jail, honored and memorialized the democratic movement and its martyrs. Yet I hear — from the mouth of this elected civilian president — that as of this minute all political activity is banned, all press must undergo censorship, all violators will face arrest without warrant. The words instantly transport me back to the years under martial law, as if history has not taken place, as if I have awakened to find it had all been a dream."
+    ],
+    [
+      "To my son's surprise and to my own, ",
+      {
+        "jp": [
+          ["私", "わたし", "I"], "は", ["テレビ", null, "TV"], "の",
+          ["前", "まえ", "front / in front of"], "で",
+          ["泣き始めました", "なきはじめました", "began to cry"], "。"
+        ],
+        "tr": "I start sobbing in front of the TV.",
+        "g": "<b>〜始める</b> attaches to a verb stem to mean 'begin to ~': 泣き始めました = 'began to cry.'"
+      },
+      " This is something I rarely feel entitled to do, not since my father demanded I stop crying at the ER. Is it that girl at the ER who is sobbing, all these years later? I am scared I no longer seem to be where I thought I was — here at home, with my son at the cusp of adulthood, my very old cat, my handsome black dog: the family I have now, who have replaced my late, departed family. I am overcome by a visceral realization that I have so much to lose. ",
+      {
+        "jp": [
+          ["今", "いま", "now"], "、", ["私", "わたし", "I"], "は",
+          ["いたい", null, "want to be / stay"], ["場所", "ばしょ", "place"], "に",
+          ["います", null, "am (present / exist)"], "。"
+        ],
+        "tr": "I am where I want to be; I do not want to be anywhere else.",
+        "g": "<b>いたい</b> is the 〜たい ('want to') form of いる ('to be / stay'); いたい場所 = 'the place I want to be.'"
+      },
+      " It has taken me so long to arrive at this place, but just like that, this place could turn into the same place I wanted to escape."
+    ],
+    [
+      "I also recall the petition I signed months ago, drafted by colleagues at my university in protest of this administration's injustices. Had I been able to speak up all these years — as a writer, an academic, a citizen — only because I believed it was perfectly safe? I begin to see flashes of men banging at my door, of being blindfolded and driven away, locked in a windowless room with a single naked-red lightbulb swinging from the ceiling, my head pushed into a tub of water until my arms flail and go limp, my shirt ripped open by a bayonet that stabs into my breasts, over and over."
+    ],
+    [
+      "Not now. Not now when I finally want to stay, when I finally want to be here in this place where I am, after everything that I, and this country, have been through."
+    ],
+    [
+      "It is spring 2025, two weeks after the Constitutional Court ruled to oust the president for the unjustified military takeover that violated the rule of law and democracy. ",
+      {
+        "jp": [
+          ["2025年", "にせんにじゅうごねん", "the year 2025"], "の",
+          ["春", "はる", "spring"], "、", ["裁判所", "さいばんしょ", "court"], "が",
+          ["大統領", "だいとうりょう", "president"], "を",
+          ["やめさせました", null, "made (him) step down"], "。"
+        ],
+        "tr": "The Constitutional Court forced the president to step down.",
+        "g": "<b>やめさせました</b> is the causative of やめる ('to quit / stop'): 'made (someone) quit.' The causative ends in 〜させる."
+      },
+      " A student in my poetry translation workshop brings in the poem “Black Leaf in My Mouth,” by the late Gi Hyeong-do, whose abysmal hopelessness the critic Kim Hyun wished no other Korean poet would ever share again. Not long after publishing it, Gi died of a stroke, alone at a late-night movie showing, a bottle of soju in his hand."
+    ],
+    [
+      "As my student reads the last line — “Inside my mouth clings this black leaf, stubborn and desperate, and I am terrified” — I notice the quiver in her voice, the flush in her cheeks. She has spent the past year battling stage-three breast cancer but has returned from winter break wearing a rosy glow instead of her wig. How brave she is, to look straight into the poet's fear and despair. She talks about how the poem, centered on an “incident” and the deaths that ensue, resonated with her as she lived through the shock of the short-lived martial law; we talk about how it seems to be about trying, but being unable, or too frightened, to speak. I mention that the line about the young boy bursting into sobs at his father's funeral, unable to bear being “besieged by the leaves,” was especially vivid for me — but I do not say how it transported me back to the steamy cafeteria and the photo of the little boy in Gwangju, whose hollow grief I recognized yet felt I had no right to feel."
+    ],
+    [
+      "Two weeks earlier, on the day of the impeachment ruling, I heard the roar of the crowd outside the courthouse from my perch on the foot of Mt. Inwang, where I live, next to a fortress built six hundred years ago — back when Korea was a kingdom named Joseon. The sound traveled uphill, my whole neighborhood booming with the thumping beat of the K-pop hit “Fighting,” its lyrics rewritten for the occasion: “Oust Him!” Even protest songs are fun and trendy now; the liberation dance is an antiquity remembered by few. The trial revealed, however, that my fears had not been mere paranoia: the plans to siege the state were very much real, ready to be executed. The ground could have crumbled under my feet. But it is now time, and on TV the judge begins to read the verdict, the exposition clear and taut, perfectly cadenced, as real as anything in this world."
+    ],
+    [
+      "I am where I want to be, here and nowhere else, and it feels more real than anything, perhaps for the very first time. ",
+      {
+        "jp": [
+          ["ここ", null, "here / this place"], "が", "、", ["私", "わたし", "I / my"], "の",
+          ["いたい", null, "want to be (in)"], ["場所", "ばしょ", "place"], "です", "。"
+        ],
+        "tr": "This is the place I want to be.",
+        "g": "<b>〜が…です</b> identifies: ここが…場所です = 'This (right here) is the place ….'"
+      },
+      " ",
+      {
+        "jp": [
+          ["ほか", null, "other"], "の", ["どこ", null, "where / anywhere"], "でも",
+          ["ありません", null, "there is not"], "。"
+        ],
+        "tr": "Nowhere else.",
+        "g": "<b>どこでも〜ません</b> = 'not anywhere': ほかのどこでもありません = 'nowhere else.'"
+      }
+    ],
+    [
+      "— Ewha Womans University, Seoul. Ha-yun Jung's writing has appeared in the Harvard Review, the New York Times, Translation Review, and other publications. She teaches literary translation at Ewha Womans University in Seoul."
+    ]
+  ]
+}
