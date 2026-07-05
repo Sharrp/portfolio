@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
 <title>N4 Inline Reader</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext y='14' font-size='14'%3E%E6%97%A5%3C/text%3E%3C/svg%3E">
 <style>
@@ -53,18 +54,6 @@
   }
 
   header.doc { margin: 8px 0 22px; }
-  header.doc .level {
-    display: inline-block;
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    padding: 2px 9px;
-    margin-bottom: 12px;
-  }
   header.doc h1 {
     font-size: 1.7em;
     line-height: 1.25;
@@ -171,43 +160,40 @@
   #pop .reading { font-family: var(--jp-font); color: var(--rt); font-size: .9em; margin-top: 1px; }
   #pop .meaning { margin-top: 5px; font-size: .9em; line-height: 1.4; color: var(--muted); }
 
-  /* settings */
-  #gear {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 40;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: 1px solid var(--rule);
-    background: var(--card);
-    color: var(--fg);
-    box-shadow: 0 4px 16px var(--card-shadow);
-    cursor: pointer;
-    font-size: 20px;
+  /* top bar: article picker + settings word (scrolls with content) */
+  .topbar {
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-  #scrim {
-    position: fixed; inset: 0; z-index: 45;
-    background: rgba(0,0,0,.35);
-    display: none;
-  }
-  #scrim.on { display: block; }
-  #sheet {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 46;
-    background: var(--card);
-    border-radius: 16px 16px 0 0;
-    box-shadow: 0 -6px 26px var(--card-shadow);
-    padding: 18px 20px calc(20px + env(safe-area-inset-bottom));
+    justify-content: flex-end;
+    gap: 12px;
+    margin: 0 0 18px;
     font-family: var(--sans);
-    transform: translateY(110%);
-    transition: transform .22s ease;
+    font-size: 13px;
   }
-  #sheet.on { transform: translateY(0); }
-  #sheet h2 { font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .topbar .picker { margin-right: auto; }
+  .set-toggle {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 1px dashed var(--rule);
+    padding: 1px 0;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .set-toggle:hover { color: var(--fg); }
+  .set-toggle.on { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .set-panel {
+    font-family: var(--sans);
+    background: var(--panel-bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 16px 16px 4px;
+    margin: 0 0 22px;
+  }
   .row { margin: 0 0 16px; }
   .row label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
   .row .val { color: var(--fg); }
@@ -225,23 +211,10 @@
     cursor: pointer;
   }
   .seg button.on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  #sheet .done {
-    width: 100%;
-    margin-top: 4px;
-    padding: 11px 0;
-    border: none;
-    border-radius: 10px;
-    background: var(--accent);
-    color: var(--bg);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-  }
 
   .picker {
     font-family: var(--sans);
     font-size: 13px;
-    margin-bottom: 18px;
   }
   .picker select {
     font: inherit;
@@ -250,15 +223,42 @@
     border: 1px solid var(--rule);
     border-radius: 8px;
     padding: 6px 8px;
-    max-width: 100%;
+    max-width: 60vw;
   }
   .err { font-family: var(--sans); color: #c0392b; padding: 20px 0; }
 </style>
 
 <div class="wrap">
-  <div class="picker" id="picker" hidden>
-    <select id="pickSel" aria-label="Choose article"></select>
+  <div class="topbar">
+    <span class="picker" id="picker" hidden>
+      <select id="pickSel" aria-label="Choose article"></select>
+    </span>
+    <button id="setToggle" class="set-toggle" aria-expanded="false">settings</button>
   </div>
+
+  <div id="setPanel" class="set-panel" hidden role="region" aria-label="Reader settings">
+    <div class="row">
+      <label>Font size — <span class="val" id="fsVal"></span></label>
+      <input type="range" id="fs" min="16" max="28" step="1">
+    </div>
+    <div class="row">
+      <label>Line spacing — <span class="val" id="lhVal"></span></label>
+      <input type="range" id="lh" min="12" max="26" step="1">
+    </div>
+    <div class="row">
+      <label>Distance between characters — <span class="val" id="lsVal"></span></label>
+      <input type="range" id="ls" min="0" max="15" step="1">
+    </div>
+    <div class="row">
+      <label>Theme</label>
+      <div class="seg" id="themeSeg">
+        <button data-theme="auto">Auto</button>
+        <button data-theme="light">Light</button>
+        <button data-theme="dark">Dark</button>
+      </div>
+    </div>
+  </div>
+
   <header class="doc" id="head"></header>
   <main id="body"></main>
 </div>
@@ -269,29 +269,6 @@
   <div class="meaning"></div>
 </div>
 
-<button id="gear" aria-label="Settings">⚙</button>
-<div id="scrim"></div>
-<div id="sheet" role="dialog" aria-label="Reader settings">
-  <h2>Reader settings</h2>
-  <div class="row">
-    <label>Font size — <span class="val" id="fsVal"></span></label>
-    <input type="range" id="fs" min="16" max="26" step="1">
-  </div>
-  <div class="row">
-    <label>Distance between characters — <span class="val" id="lsVal"></span></label>
-    <input type="range" id="ls" min="0" max="15" step="1">
-  </div>
-  <div class="row">
-    <label>Theme</label>
-    <div class="seg" id="themeSeg">
-      <button data-theme="auto">Auto</button>
-      <button data-theme="light">Light</button>
-      <button data-theme="dark">Dark</button>
-    </div>
-  </div>
-  <button class="done" id="doneBtn">Done</button>
-</div>
-
 <script>
 (function () {
   "use strict";
@@ -299,6 +276,7 @@
   // ---------- settings / theme ----------
   var LS = {
     fs: "n4_fontsize",
+    lh: "n4_lineheight",
     ls: "n4_letterspacing",
     th: "n4_theme"
   };
@@ -319,45 +297,55 @@
   function setPref(key, v) { try { localStorage.setItem(key, v); } catch (e) {} }
 
   var themeMode = getPref(LS.th, "auto");
-  var fontSize = parseInt(getPref(LS.fs, "19"), 10);
-  var letterSpacing = parseInt(getPref(LS.ls, "0"), 10); // stored 0..15 => 0..0.15em
+  var fontSize = parseInt(getPref(LS.fs, "19"), 10);      // px
+  var lineHeight = parseInt(getPref(LS.lh, "17"), 10);    // stored 12..26 => 1.2..2.6
+  var letterSpacing = parseInt(getPref(LS.ls, "0"), 10);  // stored 0..15 => 0..0.15em
 
   applyTheme(themeMode);
   mq.addEventListener("change", function () { if (themeMode === "auto") applyTheme("auto"); });
 
+  var wrapEl = document.querySelector(".wrap");
   function applyTypography() {
-    var wrap = document.querySelector(".wrap");
-    wrap.style.fontSize = fontSize + "px";
+    wrapEl.style.fontSize = fontSize + "px";
+    wrapEl.style.lineHeight = (lineHeight / 10).toFixed(1);
     document.body.style.letterSpacing = (letterSpacing / 100) + "em";
   }
 
-  // settings UI
-  var gear = document.getElementById("gear");
-  var scrim = document.getElementById("scrim");
-  var sheet = document.getElementById("sheet");
+  // settings UI (inline, scrolls with content)
+  var setToggle = document.getElementById("setToggle");
+  var setPanel = document.getElementById("setPanel");
   var fsIn = document.getElementById("fs");
+  var lhIn = document.getElementById("lh");
   var lsIn = document.getElementById("ls");
   var fsVal = document.getElementById("fsVal");
+  var lhVal = document.getElementById("lhVal");
   var lsVal = document.getElementById("lsVal");
   var themeSeg = document.getElementById("themeSeg");
 
   function refreshSettingsUI() {
     fsIn.value = fontSize; fsVal.textContent = fontSize + "px";
+    lhIn.value = lineHeight; lhVal.textContent = (lineHeight / 10).toFixed(1);
     lsIn.value = letterSpacing; lsVal.textContent = (letterSpacing / 100).toFixed(2) + "em";
     [].forEach.call(themeSeg.children, function (b) {
       b.classList.toggle("on", b.getAttribute("data-theme") === themeMode);
     });
   }
-  function openSheet() { refreshSettingsUI(); scrim.classList.add("on"); sheet.classList.add("on"); }
-  function closeSheet() { scrim.classList.remove("on"); sheet.classList.remove("on"); }
 
-  gear.addEventListener("click", openSheet);
-  scrim.addEventListener("click", closeSheet);
-  document.getElementById("doneBtn").addEventListener("click", closeSheet);
+  setToggle.addEventListener("click", function () {
+    var open = setPanel.hasAttribute("hidden");
+    if (open) { refreshSettingsUI(); setPanel.removeAttribute("hidden"); }
+    else { setPanel.setAttribute("hidden", ""); }
+    setToggle.classList.toggle("on", open);
+    setToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
 
   fsIn.addEventListener("input", function () {
     fontSize = parseInt(fsIn.value, 10); setPref(LS.fs, fontSize);
     fsVal.textContent = fontSize + "px"; applyTypography();
+  });
+  lhIn.addEventListener("input", function () {
+    lineHeight = parseInt(lhIn.value, 10); setPref(LS.lh, lineHeight);
+    lhVal.textContent = (lineHeight / 10).toFixed(1); applyTypography();
   });
   lsIn.addEventListener("input", function () {
     letterSpacing = parseInt(lsIn.value, 10); setPref(LS.ls, letterSpacing);
@@ -550,9 +538,6 @@
   function renderArticle(data) {
     var head = document.getElementById("head");
     head.innerHTML = "";
-    if (data.level) {
-      var lv = el("span", "level"); lv.textContent = data.level; head.appendChild(lv);
-    }
     var h1 = el("h1"); h1.textContent = data.title || "Untitled"; head.appendChild(h1);
     if (data.subtitle) { var st = el("div", "subtitle"); st.textContent = data.subtitle; head.appendChild(st); }
     if (data.source && data.source.url) {
