@@ -1,0 +1,559 @@
+{
+  "title": "How Claude Code changed my work as a Data Scientist",
+  "subtitle": "One data scientist's before-and-after, in the numbers",
+  "level": "N4",
+  "source": null,
+  "blocks": [
+    [
+      "Companies write big checks for coding-agent subscriptions, and now they're asking about ROI. Most of that debate is about engineers. Here's what it looks like from a data scientist's perspective. ",
+      {
+        "jp": [
+          [
+            "私",
+            "わたし",
+            "I"
+          ],
+          "は",
+          [
+            "自分",
+            "じぶん",
+            "oneself / myself"
+          ],
+          "の",
+          [
+            "仕事",
+            "しごと",
+            "work / job"
+          ],
+          "の",
+          [
+            "データ",
+            null,
+            "data"
+          ],
+          "を",
+          [
+            "分析して",
+            "ぶんせきして",
+            "analyze, and… (te-form)"
+          ],
+          "、",
+          [
+            "ここ",
+            null,
+            "here"
+          ],
+          "に",
+          [
+            "書きました",
+            "かきました",
+            "wrote"
+          ],
+          "。"
+        ],
+        "orig": "I did what an analyst does — took the data on how I work, analyzed it, and put it in this post as a snapshot.",
+        "tr": "I analyzed the data on my own work and wrote it up here.",
+        "g": "Two clauses joined by <b>te-form</b>: 分析して … 書きました (\"analyzed, and then wrote\")."
+      }
+    ],
+    {
+      "h": "A bit of context"
+    },
+    [
+      "I joined Finom as the lead DS focused on AI evals — building evaluation company-wide from scratch and lifting quality in our AI products. After leaving Yandex, where I led a large analytics team, I was curious how far agentic coding could take one person. ",
+      {
+        "jp": [
+          [
+            "私",
+            "わたし",
+            "I"
+          ],
+          "は",
+          "、",
+          [
+            "一人",
+            "ひとり",
+            "one (person)"
+          ],
+          "の",
+          [
+            "データサイエンティスト",
+            null,
+            "data scientist"
+          ],
+          "が",
+          [
+            "どこ",
+            null,
+            "where / how far"
+          ],
+          "まで",
+          [
+            "できる",
+            null,
+            "can do"
+          ],
+          "か",
+          [
+            "知りたかった",
+            "しりたかった",
+            "wanted to know"
+          ],
+          "です",
+          "。"
+        ],
+        "orig": "I was curious how far one DS can go with agentic coding.",
+        "tr": "I wanted to know how far a single data scientist could go.",
+        "g": "Embedded question with <b>か</b>: どこまでできるか (\"how far one can go\") inside 知りたかった."
+      }
+    ],
+    [
+      "I analyzed 9 months of my Jira, Git and Claude Code history and compared Q4'25 with Q2'26."
+    ],
+    [
+      "Q4'25: I did analysis by hand, copy-pasted snippets from ChatGPT, and used Cursor for some tasks (though, honestly, I didn't like it much)."
+    ],
+    [
+      "Q1'26: ",
+      {
+        "jp": [
+          "Claude Code",
+          "を",
+          [
+            "入れて",
+            "いれて",
+            "installed (te-form)"
+          ],
+          "、",
+          "Opus 4.5",
+          "を",
+          [
+            "使ってみたら",
+            "つかってみたら",
+            "when I tried using it"
+          ],
+          "、",
+          [
+            "すぐに",
+            null,
+            "right away"
+          ],
+          [
+            "気に入りました",
+            "きにいりました",
+            "took a liking to it"
+          ],
+          "。"
+        ],
+        "orig": "I installed Claude Code, tried Opus 4.5, and it clicked!",
+        "tr": "I installed Claude Code, and when I tried Opus 4.5, I liked it right away.",
+        "g": "<b>〜てみる</b> (try doing) + <b>〜たら</b> (when): 使ってみたら = \"when I gave it a try.\""
+      }
+    ],
+    [
+      "Q2'26: I built a personal harness (context, tools, access, skills) so that every task is powered by Claude Code."
+    ],
+    {
+      "h": "Here's what I found"
+    },
+    [
+      "1. The analytics job itself (Python scripts, SQL, eval datasets, prompts) grew ×4.6, from 12k to 58k lines per quarter. ",
+      {
+        "jp": [
+          [
+            "同じ",
+            "おなじ",
+            "same"
+          ],
+          [
+            "仕事",
+            "しごと",
+            "work / job"
+          ],
+          "です",
+          "が",
+          "、",
+          [
+            "前",
+            "まえ",
+            "before"
+          ],
+          "より",
+          [
+            "多くて",
+            "おおくて",
+            "much / many (te-form)"
+          ],
+          [
+            "速く",
+            "はやく",
+            "fast"
+          ],
+          [
+            "できるようになりました",
+            null,
+            "came to be able to do"
+          ],
+          "。"
+        ],
+        "orig": "The same job I always did, now more and faster.",
+        "tr": "It's the same job, but I've come to be able to do more of it, and faster.",
+        "g": "New point <b>〜ようになる</b>: attach to a plain verb to mean \"reach a state of doing / come to do.\" できる→できるようになる = \"came to be able to.\""
+      }
+    ],
+    [
+      "(Yes, lines of code are a poor productivity metric — but scroll down for the business impact.)"
+    ],
+    [
+      "2. And I stopped being only an analyst. Developing the eval harness, making changes in production code, quality-affecting fixes — I now write them myself. ",
+      {
+        "jp": [
+          [
+            "以前",
+            "いぜん",
+            "previously"
+          ],
+          "は",
+          [
+            "開発者",
+            "かいはつしゃ",
+            "developer"
+          ],
+          "に",
+          [
+            "頼んでいた",
+            "たのんでいた",
+            "used to ask for"
+          ],
+          [
+            "修正",
+            "しゅうせい",
+            "fixes"
+          ],
+          "を",
+          "、",
+          [
+            "今",
+            "いま",
+            "now"
+          ],
+          "は",
+          [
+            "自分",
+            "じぶん",
+            "myself"
+          ],
+          "で",
+          [
+            "書いています",
+            "かいています",
+            "write"
+          ],
+          "。"
+        ],
+        "orig": "Quality-affecting fixes I used to hand off to devs — now I write them myself.",
+        "tr": "Fixes I used to ask developers for, I now write myself.",
+        "g": "<b>〜ていた</b> for a past habit: 頼んでいた = \"used to ask (repeatedly).\""
+      }
+    ],
+    [
+      "The share of tasks I ship directly vs. hand to developers: 28% in Q4'25 → 93% in Q2'26. It flipped!"
+    ],
+    [
+      "Production changes: ~0.1k → 4.0k lines across ~50 commits in Q2'26."
+    ],
+    [
+      "Repos I touch: 1 → 8, including backend and MCP services. ",
+      {
+        "jp": [
+          "「",
+          [
+            "分析",
+            "ぶんせき",
+            "analysis"
+          ],
+          "の",
+          [
+            "コード",
+            null,
+            "code"
+          ],
+          "」",
+          "と",
+          "「",
+          [
+            "サービス",
+            null,
+            "service"
+          ],
+          "の",
+          [
+            "コード",
+            null,
+            "code"
+          ],
+          "」",
+          "の",
+          [
+            "間",
+            "あいだ",
+            "space between"
+          ],
+          "の",
+          [
+            "壁",
+            "かべ",
+            "wall"
+          ],
+          "が",
+          [
+            "なくなりました",
+            null,
+            "is gone / disappeared"
+          ],
+          "。"
+        ],
+        "orig": "The wall between \"analytics code\" and \"service code\" is gone.",
+        "tr": "The wall between \"analytics code\" and \"service code\" has disappeared.",
+        "g": "<b>なくなる</b> = \"become non-existent / disappear\" (ない + なる)."
+      }
+    ],
+    [
+      "Before Claude Code I shipped almost zero code to our services; now I do part of the engineering myself."
+    ],
+    [
+      "Put those together and the analysis got bigger and better, while time-to-market went from days to hours. ",
+      {
+        "jp": [
+          "「",
+          [
+            "分析",
+            "ぶんせき",
+            "analysis"
+          ],
+          "」",
+          "と",
+          "「",
+          [
+            "本番",
+            "ほんばん",
+            "production / going live"
+          ],
+          "」",
+          "の",
+          [
+            "間",
+            "あいだ",
+            "between"
+          ],
+          "の",
+          [
+            "この",
+            null,
+            "this"
+          ],
+          [
+            "ステップ",
+            null,
+            "step"
+          ],
+          "は",
+          "、",
+          "「",
+          [
+            "受け渡し",
+            "うけわたし",
+            "handoff"
+          ],
+          "」",
+          "と",
+          [
+            "呼ばれます",
+            "よばれます",
+            "is called"
+          ],
+          "。"
+        ],
+        "orig": "There's a step between \"the analysis says X\" and \"X is live\" — the handoff.",
+        "tr": "The step between \"analysis\" and \"production\" is called a \"handoff.\"",
+        "g": "New point: <b>passive 〜られる</b>. 呼ぶ (to call) → 呼ばれる (is called); the thing is X と呼ばれる = \"is called X.\""
+      }
+    ],
+    [
+      "That handoff — between \"the analysis says X\" and \"X is live\" — is what disappeared. ",
+      {
+        "jp": [
+          [
+            "分析",
+            "ぶんせき",
+            "analysis"
+          ],
+          "と",
+          [
+            "エンジニアリング",
+            null,
+            "engineering"
+          ],
+          "の",
+          [
+            "間",
+            "あいだ",
+            "between"
+          ],
+          "の",
+          [
+            "受け渡し",
+            "うけわたし",
+            "handoff"
+          ],
+          "が",
+          [
+            "なくなったので",
+            null,
+            "because it disappeared"
+          ],
+          "、",
+          [
+            "時間",
+            "じかん",
+            "time"
+          ],
+          "が",
+          [
+            "何日",
+            "なんにち",
+            "how many days"
+          ],
+          "から",
+          [
+            "何時間",
+            "なんじかん",
+            "how many hours"
+          ],
+          "に",
+          [
+            "短くなりました",
+            "みじかくなりました",
+            "became short"
+          ],
+          "。"
+        ],
+        "orig": "Time-to-market went from days to hours — because there's no longer a handoff.",
+        "tr": "Because the handoff is gone, the time shrank from days to hours.",
+        "g": "<b>〜ので</b> (because): なくなったので = \"because it disappeared.\""
+      }
+    ],
+    [
+      {
+        "jp": [
+          [
+            "正直",
+            "しょうじき",
+            "honestly"
+          ],
+          "、",
+          [
+            "仕事",
+            "しごと",
+            "job"
+          ],
+          "が",
+          [
+            "こんなに",
+            null,
+            "this much"
+          ],
+          [
+            "変わって",
+            "かわって",
+            "change (te-form)"
+          ],
+          "、",
+          [
+            "とても",
+            null,
+            "very"
+          ],
+          [
+            "驚いています",
+            "おどろいています",
+            "am amazed"
+          ],
+          "。"
+        ],
+        "orig": "I'm honestly amazed at how much this has changed my job.",
+        "tr": "Honestly, my job changed this much, and I'm very amazed.",
+        "g": "<b>Te-form as cause</b>: 変わって、驚いています = \"it changed, so I'm amazed.\""
+      },
+      " ",
+      {
+        "jp": [
+          "でも",
+          "、",
+          [
+            "これ",
+            null,
+            "this"
+          ],
+          "は",
+          [
+            "まだ",
+            null,
+            "still"
+          ],
+          [
+            "始まり",
+            "はじまり",
+            "beginning"
+          ],
+          "だ",
+          "と",
+          [
+            "思います",
+            "おもいます",
+            "think"
+          ],
+          "。"
+        ],
+        "orig": "And it still feels like just the beginning.",
+        "tr": "But I think this is still just the beginning.",
+        "g": "<b>〜と思う</b> (I think): plain clause + と + 思います."
+      }
+    ],
+    [
+      "I'm curious to see where deeper integration, loop engineering, and better models will take us. ",
+      {
+        "jp": [
+          [
+            "これから",
+            null,
+            "from now on"
+          ],
+          [
+            "どこ",
+            null,
+            "where / how far"
+          ],
+          "まで",
+          [
+            "進む",
+            "すすむ",
+            "to advance / go"
+          ],
+          "か",
+          "、",
+          [
+            "楽しみ",
+            "たのしみ",
+            "looking forward to"
+          ],
+          "です",
+          "。"
+        ],
+        "orig": "Let's see how far this goes!",
+        "tr": "I'm looking forward to seeing how far this goes.",
+        "g": "Embedded question <b>〜か</b> + 楽しみ: どこまで進むか、楽しみ = \"looking forward to how far it goes.\""
+      }
+    ]
+  ]
+}
